@@ -2,6 +2,10 @@
 a = 1.69
 b = 2.99
 
+a_int = int(1.69)
+b_int = int(2.99)
+
+
 #2
 string1 = 'www.my_site.com#about'
 string2 = string1.replace('#', '/')
