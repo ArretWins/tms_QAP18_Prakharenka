@@ -24,7 +24,6 @@ def mixed_files(file):
                         file.flush()
                         # file.close()
             f.flush()
-            f.close()
             print("Done!")
     except Exception as e:
         print(e)
