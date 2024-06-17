@@ -19,14 +19,6 @@ class Flower:
                 f"Стоимость: {self.cost} р.)")
 
 
-class Rose(Flower):
-    def __init__(self, color, freshness, stem_length, cost):
-        super().__init__('Роза', color, freshness, stem_length, cost, lifespan=4)
-
-
-class Lilac(Flower):
-    def __init__(self, color, freshness, stem_length, cost):
-        super().__init__('Сирень', color, freshness, stem_length, cost, lifespan=10)
 
 
 class Accessory:
@@ -69,16 +61,15 @@ class Bouquet:
     def has_flower(self, flower_name):
         return any(flower.name == flower_name for flower in self.flowers)
 
-
-lilac = Lilac(color="blue", freshness=9, stem_length=30, cost=2)
-otkrytka = Accessory(name="Открытка", cost=1)
-
-print(lilac.info())
-
 bouquet = Bouquet()
+rose = Flower(name='Роза', color='красный', freshness=10, stem_length=40, cost=5, lifespan=4)
+lilac = Flower(name='Сирень', color='синий', freshness=9, stem_length=30, cost=2, lifespan=10)
+
+bouquet.add_flower(rose)
 bouquet.add_flower(lilac)
 bouquet.add_flower(lilac)
-bouquet.add_flower(lilac)
+
+otkrytka = Accessory(name="Открытка", cost=1)
 bouquet.add_accessory(otkrytka)
 
 print("Всего стоимость:", bouquet.total_cost(), "р.")
@@ -88,6 +79,6 @@ sorted_flowers_by_stem_length = bouquet.sort_flowers('stem_length')
 print("Отсортированы:", sorted_flowers_by_stem_length)
 
 
-blue_flowers = bouquet.find_flowers(color='blue')
+blue_flowers = bouquet.find_flowers(color='синий')
 print("Есть ли синии цветы:", blue_flowers)
 print("Есть ли ромашки в букете (мы их вообще не продаем)?", bouquet.has_flower('Ромашка'))
