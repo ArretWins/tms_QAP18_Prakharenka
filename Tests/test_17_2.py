@@ -33,6 +33,7 @@ class TestClass2:
     @mark.parametrize('arg, expected_exception', [
         (5, AttributeError),
         ('', ValueError),
+        ('   ', ValueError), #пробелы
     ])
     def test_3(self, arg, expected_exception):
         with pytest.raises(expected_exception):
@@ -41,3 +42,7 @@ class TestClass2:
     @mark.Hw5_4
     def test_4(self):
         assert get_longest_word('abc def') == 'abc'
+
+    @mark.Hw5_4
+    def test_5(self):
+        assert get_longest_word('I am learning python!') == 'learning'

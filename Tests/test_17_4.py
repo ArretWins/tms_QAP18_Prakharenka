@@ -6,9 +6,7 @@
 
 # Дан файл вещественных чисел. Заменить в нем все элементы на их квадраты.
 
-import pytest
 from pytest import mark, fixture
-from pathlib import Path
 
 
 def sq_files(file, output_file):
@@ -37,6 +35,7 @@ class TestHw6:
     def output_file(self, tmp_path):
         output_file_path = tmp_path / "output_file.txt"
         yield output_file_path
+        output_file_path.unlink()
 
     @mark.hw6_3
     @mark.parametrize("file_contents, expected_output", [
@@ -45,6 +44,15 @@ class TestHw6:
         ("", []),
         ("5", ["25.0"]),
         ("a\nb\nc\n", ["could not convert string to float: 'a\\n'"]),
+        ("0\n0\n0\n0\n0\n0\n", ['0.0', '0.0', '0.0', '0.0', '0.0', '0.0']), #нули
+        ("-2\n0\n-88\n10\n-1.5\n5.1", ['4.0', '0.0', '7744.0', '100.0', '2.25', '26.009999999999998']), #отрицательные
+        ("0\n2\n4\n10\n12\n14\n16\n1\n3\n5\n6\n7\n8\n10\n14.2\n12.02\n",
+         ['0.0', '4.0', '16.0', '100.0', '144.0', '196.0', '256.0',
+          '1.0', '9.0', '25.0', '36.0', '49.0', '64.0', '100.0', '201.64', '144.4804'] ), #много чисел
+        ("5151513265\n48949416841351561\n865418948941\n12122854184616",
+         ['2.653808891947096e+19', '2.3960454091083917e+33',
+          '7.489499571861452e+23', '1.4696359358146167e+26']), #большие числа
+
     ])
     def test_sq_files(self, create_file, output_file, file_contents, expected_output):
         create_file.write_text(file_contents)
