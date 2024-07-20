@@ -1,5 +1,5 @@
 from diplom_alza_sk.pages.base_page import BasePage
-from diplom_alza_sk.elements.locators import BasketLocators
+from diplom_alza_sk.locators.basket_locators import BasketLocators
 
 
 class BasketPage(BasePage, BasketLocators):

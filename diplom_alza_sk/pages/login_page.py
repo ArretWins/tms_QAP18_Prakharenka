@@ -1,5 +1,5 @@
 from diplom_alza_sk.pages.base_page import BasePage
-from diplom_alza_sk.elements.locators import LoginLocators
+from diplom_alza_sk.locators.login_locators import LoginLocators
 
 
 class LoginPage(BasePage, LoginLocators):

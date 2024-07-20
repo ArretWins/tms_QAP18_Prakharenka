@@ -1,5 +1,6 @@
 from diplom_alza_sk.pages.base_page import BasePage
-from diplom_alza_sk.elements.locators import HeaderLocators, ContextMenuLocators
+from diplom_alza_sk.locators.header_locators import HeaderLocators
+from diplom_alza_sk.locators.context_menu_locators import ContextMenuLocators
 
 
 class HeaderElement(BasePage, HeaderLocators, ContextMenuLocators):

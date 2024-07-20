@@ -1,5 +1,5 @@
 from diplom_alza_sk.pages.base_page import BasePage
-from diplom_alza_sk.elements.locators import OrderLocators
+from diplom_alza_sk.locators.order_locators import OrderLocators
 
 
 class OrdersPage(BasePage, OrderLocators):
